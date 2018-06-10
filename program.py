@@ -54,8 +54,16 @@ def get_page_story(url: str, page_number):
     page_story = soup.find(class_='b-story-body-x x-r15').find('p').get_text()
     return page_story
 
-def get_tags():
-    pass
+def get_tags(url):
+    html = get_html(url)
+    soup = bs4.BeautifulSoup(html, 'html.parser')
+    ul = soup.find(class_='b-s-story-tag-list').find('ul').get_text()
+    ##content > div.b-sidebar > div:nth-child(3) > div.b-box-body > div
+    #<div class="b-s-story-tag-list"><ul><li><a href="https://tags.literotica.com/linds%20continued">linds continued</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20laughed">linds laughed</a>&nbsp;– </li><li><a href="https://tags.literotica.com/watched%20joan">watched joan</a>&nbsp;– </li><li><a href="https://tags.literotica.com/toes%20joan">toes joan</a>&nbsp;– </li><li><a href="https://tags.literotica.com/cock%20linds">cock linds</a>&nbsp;– </li><li><a href="https://tags.literotica.com/shapely%20calf">shapely calf</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20giggled">linds giggled</a>&nbsp;– </li><li><a href="https://tags.literotica.com/shaft%20linds">shaft linds</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20commented">linds commented</a>&nbsp;– </li><li><a href="https://tags.literotica.com/locked%20toes">locked toes</a></li></ul></div>
+    tag_list = []
+    for tag in ul.split(' – '):
+        tag_list.append(tag)
+    return tag_list
 
 def get_title(html):
     soup = bs4.BeautifulSoup(html, 'html.parser')
@@ -88,6 +96,12 @@ def main():
     short_description = get_short_description(html)
     page_count = get_number_of_pages(html)
     story = get_story(address, page_count)
+
+    if page_count > 1:
+        address = address + '?page=' + str(page_count)
+
+    tags = get_tags(address)
+    rating = get_rating(address)
 
 
 if __name__ == '__main__':
