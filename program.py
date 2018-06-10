@@ -39,8 +39,20 @@ def get_author(html):
 def get_rating():
     pass
 
-def get_story():
-    pass
+def get_story(url, page_count):
+    story = ''
+    for page_number in range(1, page_count+1):
+        story += get_page_story(url, page_number)
+    return story
+
+
+def get_page_story(url: str, page_number):
+    if page_number > 1:
+        url = url + '?page=' + str(page_number)
+    html = get_html(url)
+    soup = bs4.BeautifulSoup(html, 'html.parser')
+    page_story = soup.find(class_='b-story-body-x x-r15').find('p').get_text()
+    return page_story
 
 def get_tags():
     pass
@@ -61,7 +73,6 @@ def get_short_description(html):
     soup = bs4.BeautifulSoup(html, 'html.parser')
     desc = soup.findAll(attrs={"name": re.compile(r"description", re.I)})
     short_description = (desc[0]['content'])
-    #print(short_description)
     return short_description
 
 
@@ -76,6 +87,7 @@ def main():
     author = get_author(html)
     short_description = get_short_description(html)
     page_count = get_number_of_pages(html)
+    story = get_story(address, page_count)
 
 
 if __name__ == '__main__':
