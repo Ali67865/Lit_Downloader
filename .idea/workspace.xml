@@ -14,8 +14,8 @@
       <file leaf-file-name="program.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/program.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+            <state relative-caret-position="128">
+              <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -177,18 +177,67 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="soup.find('meta')" language="Python" />
+        <watch expression="soup.find('select').get_text()" language="Python" />
+        <watch expression="soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)}) " language="Python" />
+        <watch expression="soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0]" language="Python" />
+        <watch expression="len(soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].contents)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>soup.find('meta')</expression-string>
+        <expression-string>len(soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].contents)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].contents.len()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].contents.len</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].contents</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].contents.count()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>tag = soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].count()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].count('option')</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>tag = soup.findAll(attrs={&quot;name&quot;: re.compile(r&quot;page&quot;, re.I)})[0].count('option')</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(desc[0]['content'])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -221,8 +270,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/program.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+        <state relative-caret-position="128">
+          <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>

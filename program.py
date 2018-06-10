@@ -20,8 +20,15 @@ def get_html(url):
     response = requests.get(url)
     #print(response.status_code)
     #print(response.text)
-
     return response.text
+
+def get_number_of_pages(html):
+    soup = bs4.BeautifulSoup(html, 'html.parser')
+    page_count = len(soup.findAll(attrs={"name": re.compile(r"page", re.I)})[0].contents)
+    #print(page_count)
+    return page_count
+
+    #[<select name="page"><option class="current" selected="selected" value="1">1</option><option value="2">2</option></select>]
 
 def get_author(html):
     soup = bs4.BeautifulSoup(html, 'html.parser')
@@ -58,10 +65,6 @@ def get_short_description(html):
     return short_description
 
 
-def check_if_last_page():
-    pass
-
-
 def insert_into_DB():
     pass
 
@@ -72,6 +75,7 @@ def main():
     category = get_category(html)
     author = get_author(html)
     short_description = get_short_description(html)
+    page_count = get_number_of_pages(html)
 
 
 if __name__ == '__main__':
