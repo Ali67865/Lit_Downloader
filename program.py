@@ -6,8 +6,7 @@ import re
 
 db = TinyDB('db.json')
 
-DBEntry = collections.namedtuple('DBEntry',
-                                       'title, category, author, short_description, story, tags, address, rating')
+DBEntry = collections.namedtuple('DBEntry', 'title, category, author, short_description, story, tags, address')
 
 
 def print_header():
@@ -71,11 +70,13 @@ def get_title(html):
     #print(title)
     return title
 
+
 def get_category(html):
     soup = bs4.BeautifulSoup(html, 'html.parser')
     category = soup.find('title').get_text().split(" - ")[1]
     #print(category)
     return category
+
 
 def get_short_description(html):
     soup = bs4.BeautifulSoup(html, 'html.parser')
@@ -84,7 +85,10 @@ def get_short_description(html):
     return short_description
 
 
-def insert_into_DB():
+def insert_into_DB(obj: DBEntry):
+    #'DBEntry','title, category, author, short_description, story, tags, address'
+    string_tags = ''.join(obj.tags)
+    db.insert({'title': obj.title, 'category': obj.category, 'author': obj.author, 'short_description': obj.short_description, 'story': obj.story, 'tags': obj.tags, 'address': obj.address})
     pass
 
 def main():
@@ -98,11 +102,18 @@ def main():
     story = get_story(address, page_count)
 
     if page_count > 1:
-        address = address + '?page=' + str(page_count)
+        last_page = address + '?page=' + str(page_count)
+    else:
+        last_page = address
 
-    tags = get_tags(address)
-    rating = get_rating(address)
+    tags = get_tags(last_page)
+    #rating = get_rating(address)
 
+    #report = WeatherReport(cond=condition, temp=temp, scale=scale, loc=loc)
+    #'DBEntry','title, category, author, short_description, story, tags, address'
+    obj = DBEntry (title=title, category=category, author=author, short_description=short_description, story=story, tags=tags, address=address)
+
+    insert_into_DB(obj)
 
 if __name__ == '__main__':
     main()

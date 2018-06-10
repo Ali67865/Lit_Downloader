@@ -14,20 +14,22 @@
       <file leaf-file-name="program.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/program.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="102" column="28" lean-forward="true" selection-start-line="102" selection-start-column="28" selection-end-line="103" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="154">
+              <caret line="90" column="163" selection-start-line="90" selection-start-column="163" selection-end-line="90" selection-end-column="163" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="program.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Downloads/python-jumpstart-course-demos-master/apps/05_weather_client/final/program.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="57" column="73" lean-forward="true" selection-start-line="56" selection-start-column="4" selection-end-line="57" selection-end-column="73" />
+            <state relative-caret-position="225">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -38,8 +40,8 @@
       <file leaf-file-name="program.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Python_Projects/TinyDB_tests2/program.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="2" selection-end-column="22" />
+            <state relative-caret-position="90">
+              <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-end-line="6" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -68,6 +70,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/db.json" />
         <option value="$PROJECT_DIR$/program.py" />
       </list>
     </option>
@@ -153,15 +156,15 @@
     <frame x="0" y="23" width="1280" height="740" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4894895" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4894895" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3993994" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993994" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -235,13 +238,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Python_Projects/TinyDB_tests2/program.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../TalkPython_Projects/weather_client/program.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -249,23 +245,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Python_Projects/TinyDB_tests2/program.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-end-line="6" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Downloads/python-jumpstart-course-demos-master/apps/05_weather_client/final/program.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="57" column="73" lean-forward="true" selection-start-line="56" selection-start-column="4" selection-end-line="57" selection-end-column="73" />
+        <state relative-caret-position="225">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/db.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/program.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="102" column="28" lean-forward="true" selection-start-line="102" selection-start-column="28" selection-end-line="103" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="154">
+          <caret line="90" column="163" selection-start-line="90" selection-start-column="163" selection-end-line="90" selection-end-column="163" />
         </state>
       </provider>
     </entry>
