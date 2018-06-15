@@ -56,12 +56,15 @@ def get_page_story(url: str, page_number):
 def get_tags(url):
     html = get_html(url)
     soup = bs4.BeautifulSoup(html, 'html.parser')
-    ul = soup.find(class_='b-s-story-tag-list').find('ul').get_text()
-    ##content > div.b-sidebar > div:nth-child(3) > div.b-box-body > div
-    #<div class="b-s-story-tag-list"><ul><li><a href="https://tags.literotica.com/linds%20continued">linds continued</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20laughed">linds laughed</a>&nbsp;– </li><li><a href="https://tags.literotica.com/watched%20joan">watched joan</a>&nbsp;– </li><li><a href="https://tags.literotica.com/toes%20joan">toes joan</a>&nbsp;– </li><li><a href="https://tags.literotica.com/cock%20linds">cock linds</a>&nbsp;– </li><li><a href="https://tags.literotica.com/shapely%20calf">shapely calf</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20giggled">linds giggled</a>&nbsp;– </li><li><a href="https://tags.literotica.com/shaft%20linds">shaft linds</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20commented">linds commented</a>&nbsp;– </li><li><a href="https://tags.literotica.com/locked%20toes">locked toes</a></li></ul></div>
     tag_list = []
-    for tag in ul.split(' – '):
-        tag_list.append(tag)
+    try:
+        ul = soup.find(class_='b-s-story-tag-list').find('ul').get_text()
+        ##content > div.b-sidebar > div:nth-child(3) > div.b-box-body > div
+        #<div class="b-s-story-tag-list"><ul><li><a href="https://tags.literotica.com/linds%20continued">linds continued</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20laughed">linds laughed</a>&nbsp;– </li><li><a href="https://tags.literotica.com/watched%20joan">watched joan</a>&nbsp;– </li><li><a href="https://tags.literotica.com/toes%20joan">toes joan</a>&nbsp;– </li><li><a href="https://tags.literotica.com/cock%20linds">cock linds</a>&nbsp;– </li><li><a href="https://tags.literotica.com/shapely%20calf">shapely calf</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20giggled">linds giggled</a>&nbsp;– </li><li><a href="https://tags.literotica.com/shaft%20linds">shaft linds</a>&nbsp;– </li><li><a href="https://tags.literotica.com/linds%20commented">linds commented</a>&nbsp;– </li><li><a href="https://tags.literotica.com/locked%20toes">locked toes</a></li></ul></div>
+        for tag in ul.split(' – '):
+            tag_list.append(tag)
+    except:
+        print('no tags found')
     return tag_list
 
 def get_title(html):
@@ -90,7 +93,7 @@ def insert_into_DB(obj: DBEntry):
     string_tags = ''.join(obj.tags)
     query = Query()
     query_result = db.search(query.address == obj.address)
-    if query_result is not None:
+    if not query_result:
         db.insert({'title': obj.title, 'category': obj.category, 'author': obj.author, 'short_description': obj.short_description, 'story': obj.story, 'tags': obj.tags, 'address': obj.address})
     else:
         print('story already in DB!')
@@ -125,5 +128,5 @@ def downloader_main(url: str):
 
         insert_into_DB(obj)
 
-if __name__ == '__main__':
-    downloader_main("https://www.literotica.com/s/first-time-milking")
+#if __name__ == '__main__':
+#    downloader_main("https://www.literotica.com/s/making-you-suffer")
