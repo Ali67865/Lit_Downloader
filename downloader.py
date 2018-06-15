@@ -88,29 +88,42 @@ def get_short_description(html):
 def insert_into_DB(obj: DBEntry):
     #'DBEntry','title, category, author, short_description, story, tags, address'
     string_tags = ''.join(obj.tags)
-    db.insert({'title': obj.title, 'category': obj.category, 'author': obj.author, 'short_description': obj.short_description, 'story': obj.story, 'tags': obj.tags, 'address': obj.address})
-    pass
+    query = Query()
+    query_result = db.search(query.address == obj.address)
+    if query_result is not None:
+        db.insert({'title': obj.title, 'category': obj.category, 'author': obj.author, 'short_description': obj.short_description, 'story': obj.story, 'tags': obj.tags, 'address': obj.address})
+    else:
+        print('story already in DB!')
+
 
 def downloader_main(url: str):
 
     html = get_html(url)
-    title = get_title(html)
-    category = get_category(html)
-    author = get_author(html)
-    short_description = get_short_description(html)
-    page_count = get_number_of_pages(html)
-    story = get_story(address, page_count)
-
-    if page_count > 1:
-        last_page = url + '?page=' + str(page_count)
+    query = Query()
+    query_result = db.search(query.address == url)
+    if query_result is None:
+        print('story already in DB!')
     else:
-        last_page = url
+        title = get_title(html)
+        category = get_category(html)
+        author = get_author(html)
+        short_description = get_short_description(html)
+        page_count = get_number_of_pages(html)
+        story = get_story(url, page_count)
 
-    tags = get_tags(last_page)
-    #rating = get_rating(address)
+        if page_count > 1:
+            last_page = url + '?page=' + str(page_count)
+        else:
+            last_page = url
 
-    #report = WeatherReport(cond=condition, temp=temp, scale=scale, loc=loc)
-    #'DBEntry','title, category, author, short_description, story, tags, address'
-    obj = DBEntry (title=title, category=category, author=author, short_description=short_description, story=story, tags=tags, address=url)
+        tags = get_tags(last_page)
+        #rating = get_rating(address)
 
-    insert_into_DB(obj)
+        #report = WeatherReport(cond=condition, temp=temp, scale=scale, loc=loc)
+        #'DBEntry','title, category, author, short_description, story, tags, address'
+        obj = DBEntry (title=title, category=category, author=author, short_description=short_description, story=story, tags=tags, address=url)
+
+        insert_into_DB(obj)
+
+if __name__ == '__main__':
+    downloader_main("https://www.literotica.com/s/first-time-milking")

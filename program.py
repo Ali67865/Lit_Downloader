@@ -17,16 +17,20 @@ def parse_instapaper_html(name: str):
 
 def filter_non_relevant_addresses(link_list):
     new_list = []
+    discarded_list = []
     for entry in link_list:
         entry_string = str(entry)
         #if entry_string.contains('https://www.literotica.com/s/'):
-        if ('https://www.literotica.com/s/' in entry_string) or ('http://www.literotica.com/s/' in entry_string):
+        if ('https://www.literotica.com/s/' in entry_string) or ('http://www.literotica.com/s/' in entry_string) or ('https://literotica.com/s/' in entry_string) or ('https://literotica.com/stories/' in entry_string):
             new_list.append(entry)
+        else:
+            discarded_list.append(entry)
+
     return new_list
 
 def main():
 
-    link_list = parse_instapaper_html('instapaper-export-3')
+    link_list = parse_instapaper_html('instapaper-export-4')
     parsed_list = filter_non_relevant_addresses(link_list)
 
 if __name__ == '__main__':
