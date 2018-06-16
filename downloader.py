@@ -23,7 +23,10 @@ def get_html(url):
 
 def get_number_of_pages(html):
     soup = bs4.BeautifulSoup(html, 'html.parser')
-    page_count = len(soup.findAll(attrs={"name": re.compile(r"page", re.I)})[0].contents)
+    try:
+        page_count = len(soup.findAll(attrs={"name": re.compile(r"page", re.I)})[0].contents)
+    except:
+        page_count = 1
     #print(page_count)
     return page_count
 
@@ -104,8 +107,9 @@ def downloader_main(url: str):
     html = get_html(url)
     query = Query()
     query_result = db.search(query.address == url)
-    if query_result is None:
+    if query_result:
         print('story already in DB!')
+        return 1
     else:
         title = get_title(html)
         category = get_category(html)
@@ -118,15 +122,12 @@ def downloader_main(url: str):
             last_page = url + '?page=' + str(page_count)
         else:
             last_page = url
-
         tags = get_tags(last_page)
         #rating = get_rating(address)
-
-        #report = WeatherReport(cond=condition, temp=temp, scale=scale, loc=loc)
         #'DBEntry','title, category, author, short_description, story, tags, address'
         obj = DBEntry (title=title, category=category, author=author, short_description=short_description, story=story, tags=tags, address=url)
-
         insert_into_DB(obj)
+        return 0
 
 #if __name__ == '__main__':
-#    downloader_main("https://www.literotica.com/s/making-you-suffer")
+#    downloader_main("https://www.literotica.com/s/a-cum-eating-discovery")

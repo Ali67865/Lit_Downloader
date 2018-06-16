@@ -40,13 +40,16 @@ def main():
     parsed_list = filter_non_relevant_addresses(link_list)
     total = parsed_list.__len__()
     i = 0
-    for url in parsed_list[0:10]:
-        print('downloading {} of {}'.format(i, total))
-        downloader.downloader_main(url)
+    for url in parsed_list:
+        print('downloading {} of {} = ({})'.format(i, total, url))
+        retvalue = downloader.downloader_main(url)
+        if retvalue == 0:
+            print('done, sleeping...')
+            time_delay = random.randrange(10, 100)
+            time.sleep(time_delay)
+        else:
+            print('skipped, moving on...')
         i = i+1
-        print('done, sleeping...')
-        time_delay = random.randrange(0, 100)
-        time.sleep(time_delay)
 
 
 if __name__ == '__main__':
