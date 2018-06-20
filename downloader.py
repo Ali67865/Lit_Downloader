@@ -102,14 +102,30 @@ def insert_into_DB(obj: DBEntry):
         print('story already in DB!')
 
 
+def story_does_not_exist(url:str):
+    html = get_html(url)
+    soup = bs4.BeautifulSoup(html, 'html.parser')
+    error_404 = soup.findAll(text=re.compile('Error 404'))
+    error_410 = soup.findAll(text=re.compile('Error 410'))
+    maintenance = soup.findAll(text=re.compile('Literotica is undergoing maintenance'))
+
+    if error_404 is None and error_410 is None and maintenance is None:
+        return False
+    else:
+        return True
+
 def downloader_main(url: str):
 
     html = get_html(url)
     query = Query()
     query_result = db.search(query.address == url)
+    doesnt_exist = story_does_not_exist(url)
     if query_result:
         print('story already in DB!')
         return 1
+    elif doesnt_exist:
+        print('story currently not available')
+        return 2
     else:
         title = get_title(html)
         category = get_category(html)
@@ -129,5 +145,5 @@ def downloader_main(url: str):
         insert_into_DB(obj)
         return 0
 
-#if __name__ == '__main__':
-#    downloader_main("https://www.literotica.com/s/a-cum-eating-discovery")
+if __name__ == '__main__':
+   downloader_main("https://www.literotica.com/s/learning-to-love-the-heat")
