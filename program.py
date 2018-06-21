@@ -39,7 +39,7 @@ def main():
     link_list = parse_instapaper_html('instapaper-export-4')
     parsed_list = filter_non_relevant_addresses(link_list)
     total = parsed_list.__len__()
-    i = 1300
+    i = 1620
     for url in parsed_list[i:]:
         print('downloading {} of {} = ({})'.format(i, total, url))
         retvalue = downloader.downloader_main(url)
