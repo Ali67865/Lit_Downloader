@@ -109,7 +109,7 @@ def story_does_not_exist(url:str):
     error_410 = soup.findAll(text=re.compile('Error 410'))
     maintenance = soup.findAll(text=re.compile('Literotica is undergoing maintenance'))
 
-    if error_404 is None and error_410 is None and maintenance is None:
+    if not error_404 and not error_410 and not maintenance:
         return False
     else:
         return True
@@ -146,4 +146,4 @@ def downloader_main(url: str):
         return 0
 
 if __name__ == '__main__':
-   downloader_main("https://www.literotica.com/s/learning-to-love-the-heat")
+   downloader_main("https://www.literotica.com/s/fun-for-don-and-kathy-pt-02")
